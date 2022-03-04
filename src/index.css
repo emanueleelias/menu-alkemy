@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.containerFooter {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
+.card {
+ width: 18rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-gap: 2em;
+  margin: auto;
+}
+
+.img-fluid {
+  margin: 0 auto;
+}
+
+.img-thumbnail {
+  width: 100px;
+}
+
+.icon {
+  color: orange;
+  font-size: 1.4rem;
+}
