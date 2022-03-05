@@ -1,8 +1,8 @@
 import { Form, Field, ErrorMessage } from "formik";
-import React from 'react';
 import cooking from '../../assets/cooking.png';
 
-export const FormSearch = ({errors}) => {
+const FormSearch = ({ errors }) => {
+  
   return (
     <div className="container">
       <div className="row">
@@ -11,21 +11,20 @@ export const FormSearch = ({errors}) => {
           </div>
 
           <Form className='d-flex flex-column justify-content-center col-sm-12 col-md-6 container'>
-          <h1 className="mb-3 fw-normal">Buscador de recetas</h1>
+          <h1 className="mb-3 fw-normal">Dish finder for the menu</h1>
 
             <div className=" mb-3">
-              <label className='text-sm-center form-label' htmlFor="inputSearch">Nombre del plato</label>
+              <label className='text-sm-center form-label' htmlFor="inputSearch">Name of the dish</label>
               <Field 
                 className="form-control" 
                 name="inputSearch" 
                 type="text" 
                 id="floatingInput" 
-                placeholder="pizza" 
               />
               <ErrorMessage name='inputSearch' component={() => (<div className="alert alert-danger" role="alert">{errors.inputSearch}</div>) }/>
             </div>
 
-          <button className="btn btn-primary" type="submit">Buscar</button>
+          <button className="btn btn-primary" type="submit">Search</button>
         </Form>
       </div>
     </div>

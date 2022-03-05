@@ -1,16 +1,12 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage  } from 'formik';
 import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage  } from 'formik';
+import { useContextAuth } from '../../context/useContextAuth';
 import login from '../../assets/login.png';
-import { useAuth } from '../../context/useContextAuth';
 
 const Login = () => {
 
-    const { handleLogin } = useAuth();
-    
-
+    const { handleLogin } = useContextAuth();
     const [formSubmit, setFormSubmit] = useState(false);
-
     return (
         <Formik 
             initialValues={{
@@ -24,14 +20,14 @@ const Login = () => {
 
                 //Validación del correo
                 if(!values.email) {
-                    errors.email = 'Por favor ingrese un nombre';
+                    errors.email = 'Please enter an email';
                 } else if (!regularExpresionMail.test(values.email)) {
-                    errors.email = 'El correo no es correcto.'
+                    errors.email = 'Invalid email';
                 }
 
                 //Validación de la contraseña
                 if(!values.password) {
-                    errors.password = 'Por favor ingrese una contraseña'
+                    errors.password = 'Please enter an password'
                 }
 
                 return errors;
@@ -57,7 +53,8 @@ const Login = () => {
                         <Field 
                             type="email" 
                             className="form-control" 
-                            name="email" 
+                            name="email"
+                            autoComplete="on" 
                             id="floatingInput" 
                             placeholder="challenge@alkemy.org" 
                         />
@@ -69,15 +66,16 @@ const Login = () => {
                         <Field 
                             type="password" 
                             className="form-control" 
-                            name="password" 
-                            id="floatingPassword" 
-                            placeholder="react" 
+                            name="password"
+                            autoComplete="on" 
+                            id="floatingPassword"  
+                            placeholder="react"
                         />
                         <label htmlFor="floatingPassword">Password</label>
                         <ErrorMessage name='password' component={() => (<div className="alert alert-danger" role="alert">{errors.password}</div>) }/>
                     </div>
 
-                    <button className={`mt-5 w-100 btn btn-lg btn-primary ${formSubmit && 'disabled'}`} type="submit" >Sign in {formSubmit && <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} </button>
+                    <button className={`mt-5 w-100 btn btn-lg btn-primary ${formSubmit && 'disabled'}`} type="submit" >Send {formSubmit && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} </button>
                 </Form>
             </main>
         )}

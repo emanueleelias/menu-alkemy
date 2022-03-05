@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 import { useTable } from 'react-table';
-import { AiTwotoneDelete } from 'react-icons/ai';
-import { BiDetail } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import { BiDetail } from 'react-icons/bi';
+import { AiTwotoneDelete } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 
 function useColumns() {
     const columns = useMemo(
@@ -46,18 +47,18 @@ function useColumns() {
     return columns;
 }
 
-function useRows(recipes, removeItem) {
+function useRows(dishes, removeItem) {
     const rows = 
-        recipes.map( (p) => {
+        dishes.map( (p) => {
             return (
                 {
                     image: <img className='img-thumbnail' src={p.image} alt={p.title} width='100px' />,
                     title: p.title,
                     vegan: `${p.vegan ? 'Vegan' : 'Not Vegan'}`, 
-                    readyIn: `${p.readyInMinutes}`,
-                    healtScore: `${p.healthScore}`,
+                    readyIn: `${p.readyInMinutes} min`,
+                    healtScore: <div><AiFillStar className='iconStar' /> {p.healthScore}</div>,
                     price: `$${p.pricePerServing}`,
-                    delete: <div className='ms-3 pointer'><AiTwotoneDelete className='icon' onClick={ () => removeItem(p.id) }/></div>,
+                    delete: <div className='ms-3 pointer'><AiTwotoneDelete className='icon' onClick={ () => removeItem(p) }/></div>,
                     detail: <div className='ms-3'><Link to={`/detalle/${p.id}`}><BiDetail className='icon' /></Link></div> 
                 }
             )
@@ -65,7 +66,8 @@ function useRows(recipes, removeItem) {
     return rows;
 }
 
-export const RecipeTable = ({ dishList, removeDishItem, priceTotal,  averageReadyIn, averageHealtScore, clearDishMenu }) => {
+const MenuTable = ({ dishList, removeDishItem, priceTotal,  averageReadyIn, averageHealtScore, clearDishMenu }) => {
+    
     const columns = useColumns();
     const data = useRows(dishList, removeDishItem);
     const table = useTable({ columns, data }); 
@@ -119,11 +121,10 @@ export const RecipeTable = ({ dishList, removeDishItem, priceTotal,  averageRead
                     <tr>
                         <th colSpan="2" scope="row"></th>
                         <td className='fw-bold table-dark'>Averages</td>
-                        <td className='table-dark'>{averageReadyIn()}</td>
+                        <td className='table-dark'>{averageReadyIn()} min</td>
                         <td className='table-dark'>{averageHealtScore()}</td>
                         <td className='table-dark'>$ {priceTotal()}</td>
-                        <td colspan="2" className='me-1 table-dark text-center'><div className="link-warning pointer" onClick={() => clearDishMenu()}>--Delete All--</div></td>
- 
+                        <td colSpan="2" className='me-1 table-dark text-center'><div className="link-warning pointer" onClick={() => clearDishMenu()}>--Delete All--</div></td>
                     </tr>
                 </tbody> 
                 
@@ -132,4 +133,4 @@ export const RecipeTable = ({ dishList, removeDishItem, priceTotal,  averageRead
     )
 }
 
-export default RecipeTable; 
+export default MenuTable; 

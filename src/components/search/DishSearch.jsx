@@ -1,14 +1,14 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Formik } from 'formik';
+import axios from 'axios';
+import swal from 'sweetalert';
 import DishItem from './DishItem';
 import FormSearch from './FormSearch';
 import Spinner from '../../commons/Spinner';
-import swal from 'sweetalert';
 
-const SearchRecipes = () => {
+const DishSearch = () => {
 
-  const [recetas, setRecetas] = useState([])
+  const [dishes, setDishes] = useState([])
   const [search, setSearch] = useState(false);
   const keyApi = "917f4d91107f4f17ba39cb595415a3a8";
   const urlApi = "https://api.spoonacular.com/recipes/";
@@ -24,27 +24,27 @@ const SearchRecipes = () => {
                 let errors = {};
                 //Validación de la busqueda
                 if(!value.inputSearch) {
-                  errors.inputSearch = 'Por favor ingrese una receta'
+                  errors.inputSearch = 'please enter a dish to search';
                 }else if(value.inputSearch.length < 3) {
-                  errors.inputSearch = 'El nombre del plato debe tener más de dos letras'
+                  errors.inputSearch = 'The name of the dish must have more than two characters'
                 }
                 return errors;
             }}
 
-            onSubmit={(value, {resetForm}) => {
+            onSubmit={(value, { resetForm }) => {
               setSearch(true);
-              setRecetas([]);
+              setDishes([]);
               //Aqui la llamada a la API.
               axios.get(`${urlApi}complexSearch?apiKey=${keyApi}&query=${value.inputSearch}&addRecipeInformation=true`)
                 .then(function (response) {
                   response.data.results.length === 0 
                   ? 
                   setTimeout(() => {
-                    swal("Oops!", "No se encontraron platos con ese nombre", "error");
+                    swal("Oops!", "No dishes with that name were found", "error");
                     resetForm();
                   },2201)
                   :
-                    setRecetas(response.data.results);
+                    setDishes(response.data.results);
                     resetForm();
                 })
                 .catch((error) => {
@@ -67,10 +67,10 @@ const SearchRecipes = () => {
                 <Spinner />
               :
                 <div id='aqui' className='grid'>
-                  {recetas.map((receta) => {
+                  {dishes.map((dish) => {
                     return <DishItem 
-                            key={receta.id}
-                            receta={receta}
+                            key={dish.id}
+                            dish={dish}
                           />
                   })}
                 </div>
@@ -81,6 +81,6 @@ const SearchRecipes = () => {
   )
 }
 
-export default SearchRecipes;
+export default DishSearch;
 
 

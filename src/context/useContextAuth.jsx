@@ -1,17 +1,16 @@
-import axios from 'axios';
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import swal from 'sweetalert';
-
 
 const AuthContext = createContext(null);
 
-export const useAuth = () => useContext(AuthContext);
+export const useContextAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
+  
   const navigate = useNavigate();
   const location = useLocation();
-
   const [token, setToken] = useState(null);
 
   const handleLogin = (values) => {
@@ -25,8 +24,7 @@ const AuthProvider = ({ children }) => {
       }, 1500);
       
     })
-    .catch(() => swal("Oops!", "Usuario o contraseña incorrectos - Intente de nuevo", "error"))
-    
+    .catch(() => swal("Oops!", "Login error - check credentials", "error"));
   };
 
   const handleLogout = () => {
@@ -39,6 +37,5 @@ const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
 
 export default AuthProvider;

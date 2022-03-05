@@ -15,8 +15,6 @@ const NoMatch = () => {
                         </div>
                         <div className="mt-4 error-actions">
                             <Link to="/login" className="btn btn-primary btn-lg"><span className="glyphicon glyphicon-home"></span>Take Me Home </Link>
-                            <Link to="/login" className="btn btn-default btn-lg"><span className="glyphicon glyphicon-envelope"></span> Contact Support 
-                            </Link>
                         </div>
                     </div>
                 </div>

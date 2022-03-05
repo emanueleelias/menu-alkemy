@@ -1,18 +1,10 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useContextAuth } from '../context/useContextAuth';
 import food from '../assets/food.svg';
-import { useAuth } from '../context/useContextAuth';
 
 const Navbar = () => {
 
-    const { token, handleLogout } = useAuth();
-
-    const navigate =  useNavigate()
-
-    const logOut = ()=>{
-        navigate("/login")
-        localStorage.removeItem("token")
-    }
+    const { token, handleLogout } = useContextAuth();
 
     return (
         <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light">
@@ -29,13 +21,15 @@ const Navbar = () => {
                     aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to={"/home"}>Home</Link>
+                            <NavLink className={({isActive}) => isActive ? 'nav-link active' : "nav-link"} aria-current="page" to={"/home"}>Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" to={"/search"}>Search Recipes</Link>
+                            
+                            <NavLink className={({isActive}) => isActive ? 'nav-link active' : "nav-link"} to={"/search"}>Dish Search</NavLink>
                         </li>
 
                     </ul>
