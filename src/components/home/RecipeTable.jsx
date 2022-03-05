@@ -32,11 +32,11 @@ function useColumns() {
                 accessor: 'price'
             },
             {
-                Header: '',
+                Header: 'Delete',
                 accessor: 'delete'
             },
             {
-                Header: '',
+                Header: 'Detail',
                 accessor: 'detail'
             },
         ],
@@ -57,8 +57,8 @@ function useRows(recipes, removeItem) {
                     readyIn: `${p.readyInMinutes}`,
                     healtScore: `${p.healthScore}`,
                     price: `$${p.pricePerServing}`,
-                    delete: <a href='/' className='text-center'><AiTwotoneDelete className='icon' onClick={ () => removeItem(p.id) }/></a>,
-                    detail: <div className='text-center'><Link to={`/detalle/${p.id}`}><BiDetail className='icon' /></Link></div> 
+                    delete: <div className='ms-3 pointer'><AiTwotoneDelete className='icon' onClick={ () => removeItem(p.id) }/></div>,
+                    detail: <div className='ms-3'><Link to={`/detalle/${p.id}`}><BiDetail className='icon' /></Link></div> 
                 }
             )
         }) 
@@ -117,14 +117,13 @@ export const RecipeTable = ({ dishList, removeDishItem, priceTotal,  averageRead
                         }) 
                     }
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th colSpan="2" scope="row"></th>
                         <td className='fw-bold table-dark'>Averages</td>
                         <td className='table-dark'>{averageReadyIn()}</td>
                         <td className='table-dark'>{averageHealtScore()}</td>
                         <td className='table-dark'>$ {priceTotal()}</td>
-                        <td className='table-dark text-center'><a className="link-warning" href='/' onClick={() => clearDishMenu()}>Delete All</a></td>
-                        <td className='table-dark'></td>
+                        <td colspan="2" className='me-1 table-dark text-center'><div className="link-warning pointer" onClick={() => clearDishMenu()}>--Delete All--</div></td>
+ 
                     </tr>
                 </tbody> 
                 

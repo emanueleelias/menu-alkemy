@@ -33,3 +33,7 @@ body {
   color: orange;
   font-size: 1.4rem;
 }
+
+.pointer {
+  cursor: pointer;
+}

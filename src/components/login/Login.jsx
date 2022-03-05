@@ -1,8 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage  } from 'formik';
-import { useEffect, useState } from 'react';
-import login from '../assets/login.png';
-import { useAuth } from '../context/useContextAuth';
+import { useState } from 'react';
+import login from '../../assets/login.png';
+import { useAuth } from '../../context/useContextAuth';
 
 const Login = () => {
 
@@ -10,17 +10,6 @@ const Login = () => {
     
 
     const [formSubmit, setFormSubmit] = useState(false);
-
-    const [token, setToken] = useState(() => {
-        const saved = localStorage.getItem("token");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "";
-    });
-
-
-    useEffect(() => {
-        localStorage.setItem("token", JSON.stringify(token));
-    }, [token])
 
     return (
         <Formik 
@@ -48,17 +37,14 @@ const Login = () => {
                 return errors;
             }}
 
-            onSubmit={(values) => {
-                //Aqui la llamada a la API.
-                // axios.post("http://challenge-react.alkemy.org/", values)
-                // .then( (resp) => {
-                //     setToken(resp.data.token);
-                //     setFormSubmit(true);
-                //     setTimeout(() => setFormSubmit(false), 2000);
-                //     return navigate("/");
-                // });
+            onSubmit={(values, {resetForm}) => {
                 handleLogin(values);
+                setFormSubmit(true);
                 
+                setTimeout(() => {
+                    setFormSubmit(false);
+                    resetForm();
+                }, 2000);
             }}
         >
         {( { errors }) => (   
@@ -91,9 +77,7 @@ const Login = () => {
                         <ErrorMessage name='password' component={() => (<div className="alert alert-danger" role="alert">{errors.password}</div>) }/>
                     </div>
 
-                    <button className="mt-5 w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    {formSubmit && <p className='exitoInput'>Spinner</p>}
-                    <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+                    <button className={`mt-5 w-100 btn btn-lg btn-primary ${formSubmit && 'disabled'}`} type="submit" >Sign in {formSubmit && <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} </button>
                 </Form>
             </main>
         )}

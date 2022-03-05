@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 const RecipeContext = createContext([]);
 
-export const useRecipeContext = () => useContext(RecipeContext);
+export const useContextRecipe = () => useContext(RecipeContext);
 
 const RecipeContextProvider = ({ children }) => {
 
@@ -20,16 +20,32 @@ const RecipeContextProvider = ({ children }) => {
             setDishList(dishListNoDuplicates);
         } else {
             if ( dishList.length >= 4){
-                swal("Oops!", "No puede agregar más de 4 platos al menu", "error");
+                swal({
+                    title: "Oops!",
+                    text: "Receta Eliminada del menu correctamente!",
+                    icon: "error",
+                    button: "Ok."
+                  });
             } else {
                 if(dish.vegan === true && veganCount<2) {
                     setVeganCount(veganCount+1);
                     setDishList([...dishList, { ...dish }])
                 } else if(dish.vegan === false && notVeganCount<2) {
                     setNotVeganCount(notVeganCount+1);
-                    setDishList([...dishList, { ...dish }])
-                } else {
-                    swal("Oops!", "Solo puede agregar 2 platos no veganos y 2 platos veganos", "error");
+                    setDishList([...dishList, { ...dish }]);
+                    swal({
+                        title: "Good job!",
+                        text: "Receta Agregada correctamente!",
+                        icon: "success",
+                        button: "Aww yiss!"
+                      });
+                } else {                
+                    swal({
+                        title: "Oops!",
+                        text: "Solo puede agregar 2 platos no veganos y 2 platos veganos",
+                        icon: "error",
+                        button: "Ok."
+                     });
                 }
             }
         }
@@ -47,18 +63,29 @@ const RecipeContextProvider = ({ children }) => {
     }
 
     //Devuelve el precio total del menu
-    const priceTotal = () => dishList.reduce((total, item) => total + item.pricePerServing, 0);
+    const priceTotal = () => (dishList.reduce((total, item) => total + item.pricePerServing, 0)).toFixed(2);
 
     //Remueve platos individuales
     const removeDishItem = (itemId) => {
         const dishListDeleteItem = dishList.filter((dish) => dish.id !== itemId);
-        // console.log(dishListDeleteItem);
         setDishList([...dishListDeleteItem]);
+        swal({
+            title: "Good job!",
+            text: "No puedes agregar más de 4 platos",
+            icon: "success",
+            button: "Ok."
+          });
     };
 
     //Borra todos los platos del menu
     const clearDishMenu = () => {
         setDishList([]);
+        swal({
+            title: "Good job!",
+            text: "Eliminaste todos los platos",
+            icon: "success",
+            button: "Ok."
+          });
     };
 
 

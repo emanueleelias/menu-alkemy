@@ -1,13 +1,13 @@
 import { Form, Field, ErrorMessage } from "formik";
 import React from 'react';
-import cooking from '../assets/cooking.png';
+import cooking from '../../assets/cooking.png';
 
 export const FormSearch = ({errors}) => {
   return (
     <div className="container">
       <div className="row">
           <div className="col-sm-12 col-md-6">
-            <img className="img-fluid" src={cooking} alt="Imagen de cocina" />
+            <img className="d-flex img-fluid" src={cooking} alt="Imagen de cocina" style={{width: '400px'}} />
           </div>
 
           <Form className='d-flex flex-column justify-content-center col-sm-12 col-md-6 container'>

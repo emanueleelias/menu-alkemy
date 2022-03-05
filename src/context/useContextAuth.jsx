@@ -16,24 +16,22 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = (values) => {
     axios.post("http://challenge-react.alkemy.org/", values)
-    .then((resp) => setToken(resp.data.token))
+    .then((resp) => {
+      setToken(resp.data.token);
+      localStorage.setItem("token", JSON.stringify(token));
+      setTimeout(() => {
+        const origin = location.state?.from?.pathname || '/home';
+        navigate(origin);
+      }, 1500);
+      
+    })
     .catch(() => swal("Oops!", "Usuario o contraseña incorrectos - Intente de nuevo", "error"))
-    const origin = location.state?.from?.pathname || '/home';
-    navigate(origin);
+    
   };
 
   const handleLogout = () => {
     setToken(null);
   };
-
-  console.log(token)
-  const value = {
-    token,
-    onLogin: handleLogin,
-    onLogout: handleLogout,
-  };
-
-
 
   return (
     <AuthContext.Provider value={{handleLogin, handleLogout, token }}>

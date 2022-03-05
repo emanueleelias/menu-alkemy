@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Spinner from "./Spinner";
+import Spinner from "../../commons/Spinner";
+
 
 
 const DishItemDetail = () => {

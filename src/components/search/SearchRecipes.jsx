@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import DishItem from './DishItem';
 import FormSearch from './FormSearch';
-
-import Spinner from './Spinner';
+import Spinner from '../../commons/Spinner';
 import swal from 'sweetalert';
 
 const SearchRecipes = () => {
@@ -67,14 +66,14 @@ const SearchRecipes = () => {
               ?
                 <Spinner />
               :
-              <div className='grid'>
-                {recetas.map((receta) => {
-                  return <DishItem 
-                          key={receta.id}
-                          receta={receta}
-                        />
-                })}
-              </div>
+                <div id='aqui' className='grid'>
+                  {recetas.map((receta) => {
+                    return <DishItem 
+                            key={receta.id}
+                            receta={receta}
+                          />
+                  })}
+                </div>
             }
           </>
         </section>

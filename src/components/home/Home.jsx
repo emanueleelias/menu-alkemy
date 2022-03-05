@@ -1,11 +1,10 @@
-import React, { useRecipeContext } from '../context/RecipeContext';
+import home from '../../assets/home.png';
+import { useContextRecipe } from '../../context/useContextRecipe';
 import RecipeTable from './RecipeTable';
-import home from '../assets/home.png';
 
 const Home = () => {
 
-  const { dishList, removeDishItem, priceTotal, averageReadyIn, averageHealtScore, clearDishMenu } = useRecipeContext();
-
+  const { dishList, removeDishItem, priceTotal, averageReadyIn, averageHealtScore, clearDishMenu } = useContextRecipe();
   return (
     <div className="container">
       <div className="row">
@@ -21,10 +20,11 @@ const Home = () => {
 
       {dishList.length === 0
       ?
-        <div class="alert alert-danger mt-5" role="alert">
+        <div className="alert alert-danger mt-5" role="alert">
           Aun no hay platos en el menu - Ingresa a Search Recipes para agregar platos...
         </div>
       :
+      
         <RecipeTable 
           dishList={dishList} 
           removeDishItem={removeDishItem} 

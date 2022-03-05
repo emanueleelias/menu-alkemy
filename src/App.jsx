@@ -1,17 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import React from 'react';
-// import Auth from "./components/Auth";
-import DishItemDetail from "./components/DishItemDetail";
-// import Footer from "./components/Footer";
+import DishItemDetail from "./components/search/DishItemDetail";
 
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Navbar from "./components/Navbar";
-import SearchRecipes from "./components/SearchRecipes";
-import RecipeContextProvider from './context/RecipeContext';
+
+import Login from "./components/login/Login";
+import Navbar from "./commons/Navbar";
+import SearchRecipes from "./components/search/SearchRecipes";
+
 import AuthProvider from "./context/useContextAuth";
-import ProtectedRoute from "./components/ProtectedRoute";
 import NoMatch from "./components/NoMatch";
+import Home from "./components/home/Home";
+import ProtectedRoute from "./components/login/ProtectedRoute";
+import RecipeContextProvider from "./context/useContextRecipe";
 
 function App() {
 
@@ -53,7 +53,6 @@ function App() {
                 </ProtectedRoute>
               }
             />        
-
             <Route path="*" element={<NoMatch />} />
 
           </Routes>
