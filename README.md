@@ -1,4 +1,4 @@
-# BackPacks tienda de mochilas
+# Menu Alkemy
 ## _Proyecto Creación de menu para aceleración de ALkemy
 > Challenge React-Js de [Alkemy](https://www.alkemy.org/). Año 2022 
 
@@ -39,5 +39,12 @@ Las librerias utilizadas en el proyecto son las siguientes:
 - `react-router-dom v6.0.2`: Es una librería que nos permite el enrutamiento y navegabilidad entre los diferentes componentes de nuestra SPA. Más información [aquí.](https://v5.reactrouter.com/web/guides/quick-start).
 - `react-icons v4.3.1`: Incluye íconos populares para usar en proyectos de React fácilmente, utiliza importaciones de ES6 que permiten incluir solo los íconos que se usan en el proyecto. Más información [aquí.](http://react-icons.github.io/react-icons/)
 - `react-table v7.7.0`: Sirve para crear y diseñar potentes experiencias de tablas de datos a la vez que se conserva el 100% de control sobre el marcado y los estilos, utilizada para mostrar la información en el carrito de compras. Más información [aquí.](https://react-table.tanstack.com/)
+- `bootstrap v5.1.13`:
+- `formik v2.2.9`:
+- `histoy v5.3.0`:
+- `query-string v7.7.0`:
+- `sweetalert v2.1.2`: Generador de alertas vistosas.
+- `use-query-params v1.2.3`
 
+## Principales componentes del proyecto
 
