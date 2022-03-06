@@ -7,7 +7,7 @@ const Navbar = () => {
     const { token, handleLogout } = useContextAuth();
 
     return (
-        <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="border-bottom container-fluid navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
                 <Link className="navbar-brand" to={'/home'}><img style={{ width: '100px' }} className='img-fluid' src={food} alt='Logo de comida' /></Link>
                 

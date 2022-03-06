@@ -44,7 +44,7 @@ const Login = () => {
             }}
         >
         {( { errors }) => (   
-            <main className="container form-signin w-25 mt-5 bg-light">
+            <main className="border rounded form-signinn mb-4 mt-5 bg-light">
                 <Form className='text-center m-auto'>
                     <img className="mb-3 mt-3 img-fluid" src={login} alt="Imagen de login" />
                     <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
