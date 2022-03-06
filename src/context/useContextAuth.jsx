@@ -12,9 +12,9 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [token, setToken] = useState(null);
-
+  const URL = import.meta.env.VITE_URL_LOGIN;
   const handleLogin = (values) => {
-    axios.post("http://challenge-react.alkemy.org/", values)
+    axios.post(URL, values)
     .then((resp) => {
       setToken(resp.data.token);
       localStorage.setItem("token", JSON.stringify(token));
@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
       }, 1500);
       
     })
-    .catch(() => swal("Oops!", "Login error - check credentials", "error"));
+    .catch(() => swal("Oops!", 'Please provide valid email and password', "error"));
   };
 
   const handleLogout = () => {

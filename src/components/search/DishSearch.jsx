@@ -10,9 +10,9 @@ const DishSearch = () => {
 
   const [dishes, setDishes] = useState([])
   const [search, setSearch] = useState(false);
-  const keyApi = "917f4d91107f4f17ba39cb595415a3a8";
-  const urlApi = "https://api.spoonacular.com/recipes/";
-  
+  const KEY_API = import.meta.env.VITE_API_KEY;
+  const URL_API = import.meta.env.VITE_URL_API;
+
   return (
     <>
       <Formik 
@@ -35,7 +35,7 @@ const DishSearch = () => {
               setSearch(true);
               setDishes([]);
               //Aqui la llamada a la API.
-              axios.get(`${urlApi}complexSearch?apiKey=${keyApi}&query=${value.inputSearch}&addRecipeInformation=true`)
+              axios.get(`${URL_API}complexSearch?apiKey=${KEY_API}&query=${value.inputSearch}&addRecipeInformation=true`)
                 .then(function (response) {
                   response.data.results.length === 0 
                   ? 

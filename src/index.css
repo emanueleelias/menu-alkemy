@@ -71,3 +71,13 @@ body {
 .list li {
   list-style-type: none;
 }
+
+@media (min-width: 768px) {
+   .form-search {
+     width: 70%;
+   }
+
+   .form-search button {
+     width: 30%!important;
+   }
+}

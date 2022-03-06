@@ -75,7 +75,7 @@ const Login = () => {
                         <ErrorMessage name='password' component={() => (<div className="alert alert-danger" role="alert">{errors.password}</div>) }/>
                     </div>
 
-                    <button className={`mt-5 w-100 btn btn-lg btn-primary ${formSubmit && 'disabled'}`} type="submit" >Send {formSubmit && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} </button>
+                    <button className={`mt-5 w-100 btn btn-lg btn-secondary ${formSubmit && 'disabled'}`} type="submit" >Send {formSubmit && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} </button>
                 </Form>
             </main>
         )}

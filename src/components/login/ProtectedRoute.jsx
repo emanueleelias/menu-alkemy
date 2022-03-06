@@ -2,7 +2,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useContextAuth } from '../../context/useContextAuth';
 
-
 const ProtectedRoute = ({ children }) => {
     
   const { token } = useContextAuth();

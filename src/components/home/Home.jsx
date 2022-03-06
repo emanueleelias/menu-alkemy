@@ -15,7 +15,7 @@ const Home = () => {
           <h2 className='mt-2'>Custom menu</h2>
           <p>The process of preparing a general menu program allows the server to always have preparations that meet the needs of the user, both energy requirements, nutrients and sensory satisfaction, fulfilling their expectations.</p>
           <Link to={'/search'}>
-            <button className="btn btn-primary" type="submit">Go to search</button>  
+            <button className="btn btn-outline-secondary" type="submit">Go to search</button>  
           </Link>
         </div>
         <div className="col-sm-12 col-md-6">

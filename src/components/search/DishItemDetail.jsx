@@ -12,12 +12,12 @@ const DishItemDetail = () => {
     const { title, image, summary, instructions, dairyFree, glutenFree, vegan, vegetarian, veryHealthy } = dishData;
     const [loading, setLoading] = useState(false);
     const { dishId } = useParams();
-    const keyApi = "917f4d91107f4f17ba39cb595415a3a8";
-    const urlApi = "https://api.spoonacular.com/recipes/";
+    const KEY_API = import.meta.env.VITE_API_KEY;
+    const URL_API = import.meta.env.VITE_URL_API;
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`${urlApi}${dishId}/information?apiKey=${keyApi}`)
+        axios.get(`${URL_API}${dishId}/information?apiKey=${KEY_API}`)
         .then(function (response) {
             setDishData(response.data)
         })
@@ -75,7 +75,7 @@ const DishItemDetail = () => {
                                         <button className='mt-3 w-100 btn btn-primary' onClick={() => addDishMenu(dishData)}>Add to menu</button>
                                 }
                                 <Link to={`/search`}>
-                                    <button className="mt-2 w-100 border btn btn-ligth">Return</button>
+                                    <button className="mt-2 w-100 border btn btn-outline-secondary">Return Search</button>
                                 </Link>  
                             </div>
                         </div>

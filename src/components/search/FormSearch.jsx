@@ -13,7 +13,7 @@ const FormSearch = ({ errors }) => {
           <Form className='d-flex flex-column justify-content-center col-sm-12 col-md-6 container'>
           <h1 className="mb-3 fw-normal">Dish finder for the menu</h1>
 
-            <div className=" mb-3">
+            <div className=" mb-3 form-search">
               <label className='text-sm-center form-label' htmlFor="inputSearch">Name of the dish</label>
               <Field 
                 className="form-control" 
@@ -22,9 +22,10 @@ const FormSearch = ({ errors }) => {
                 id="floatingInput" 
               />
               <ErrorMessage name='inputSearch' component={() => (<div className="alert alert-danger" role="alert">{errors.inputSearch}</div>) }/>
+
+            <button className="mt-3 w-100 btn btn-secondary" type="submit">Search</button>
             </div>
 
-          <button className="btn btn-primary" type="submit">Search</button>
         </Form>
       </div>
     </div>

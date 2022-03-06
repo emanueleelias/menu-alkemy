@@ -33,11 +33,11 @@ const DishItem = ({ dish }) => {
             }
                     
             <Link to={`/detalle/${id}`}>
-              <button className="mt-2 w-100 btn btn-primary">See details</button>
+              <button className="mt-2 w-100 btn btn-outline-secondary">See details</button>
             </Link> 
 
             <Link to={`/home`}>
-              <button className="mt-2 w-100 border btn btn-ligth">See Menu</button>
+              <button className="mt-2 w-100 btn btn-outline-secondary">See Menu</button>
             </Link> 
         </div>
     </div>

@@ -24,6 +24,7 @@ const MenuContextProvider = ({ children }) => {
                 if(dish.vegan === true && veganCount<2) {
                     setVeganCount(veganCount+1);
                     setDishList([...dishList, { ...dish }])
+                    swal("Good!", "Dish added to the menu", "success"); 
                 } else if(dish.vegan === false && notVeganCount<2) {
                     setNotVeganCount(notVeganCount+1);
                     setDishList([...dishList, { ...dish }]);

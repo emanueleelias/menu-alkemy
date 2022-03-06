@@ -21,13 +21,12 @@ Este proyecto se está desarrolando en React-js utilizando vite (creador de proy
 El proyecto requiere [Node.js](https://nodejs.org/en/) para ejecutarse.
 Abra un terminal y utilize los siguientes comandos:
 
-```sh
-$ git clone https://github.com/emanueleelias/menu-alkemy.git
-$ cd menu-alkemy
-$ yarn //Para instalar todas las dependencias que se utilizaron en el proyecto.
-$ yarn run dev  //Para iniciar el proyecto.
 ```
-
+    $ git clone https://github.com/emanueleelias/menu-alkemy.git
+    $ cd menu-alkemy
+    $ yarn //Para instalar todas las dependencias que se utilizaron en el proyecto.
+    $ yarn run dev  //Para iniciar el proyecto.
+```
 - Por mayor información [Click Aquí.](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ## Estilos
