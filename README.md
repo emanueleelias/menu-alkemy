@@ -2,6 +2,12 @@
 ## _Proyecto Creación de menu para aceleración de ALkemy
 > Challenge React-Js de [Alkemy](https://www.alkemy.org/). Año 2022 
 
+## Proba una demo del proyecto en el siguiente link
+- [Demo](menufood.netlify.app)
+- Credenciales:
+-- nombre de usuario: challenge@alkemy.org
+-- contraseña: react
+
 ## Contenido
 - Este proyecto tiene una única rama, main.
 - Proyecto/ challenge para alkemy de Emanuele Elias Daniel.
