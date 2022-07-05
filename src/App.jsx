@@ -8,13 +8,14 @@ import Home from "./components/home/Home";
 import ProtectedRoute from "./components/login/ProtectedRoute";
 import MenuContextProvider from "./context/useContextMenu";
 import DishSearch from "./components/search/DishSearch";
+import Footer from "./commons/Footer";
 
 function App() {
 
   return (
     <MenuContextProvider>
       <AuthProvider>
-
+      <div className="wrapper">
         <Navbar />
 
         <Routes>
@@ -50,6 +51,9 @@ function App() {
           <Route path="*" element={<NoMatch />} />
 
         </Routes>
+      </div>
+
+        <Footer />
       </AuthProvider>    
     </MenuContextProvider>
   )

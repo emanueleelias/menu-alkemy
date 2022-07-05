@@ -1,7 +1,11 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
+}
+
+#root {
+  height: 98.3vh;
 }
 
 .containerFooter {
@@ -13,6 +17,19 @@ body {
 .card {
  width: 18rem;
 }
+
+.wrapper {
+  min-height: calc(100% - 4rem);
+}
+
+footer {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {margin: 0;}
 
 .grid {
   display: grid;
